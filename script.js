@@ -1,20 +1,19 @@
 
 function getComputerChoice() {
     let choice;
-    let choiceNumber = Math.random() * 10
-    if (choiceNumber>6.66){
+    let choiceNumber = Math.floor(Math.random() * 3) 
+    if (choiceNumber===1){
         choice = "Rock";
-    }else if (choiceNumber>3.33){
+    }else if (choiceNumber===2){
         choice = "Paper";
     }else{
         choice = "Scissors";
     }
-    return choice;
+    return choice.toLowerCase();
 }
 
 function getHumanChoice() {
-    let choice = prompt("Choose one: Rock, Paper, Scissors");
-    return choice;
+    return prompt("Choose one: Rock, Paper, Scissors").toLowerCase();
 }
 
 function playGame() {
@@ -27,31 +26,16 @@ function playGame() {
         if (humanChoice===computerChoice) {
             console.log("Draw");
         }else{
-            if (humanChoice==="rock") {
-                if (computerChoice==="scissors") {
+            //human wins
+            if (humanChoice==="rock" && computerChoice=="scissors" ||
+                humanChoice==="scissors" && computerChoice=="paper" ||
+                humanChoice==="paper" && computerChoice=="rock") {
                     humanScore++;
-                    console.log("You won! Rock beats scissors!");
+                    console.log("You won the round!");
                 }else{
                     computerScore++;
-                    console.log("You lost! Rock beats scissors!");
+                    console.log("You lost the round!");
                 }
-            }else if (humanChoice==="scissors") {
-                if (computerChoice==="paper") {
-                    humanScore++;
-                    console.log("You won! Scissors beat paper!");
-                }else{
-                    computerScore++;
-                    console.log("You lost! Scissors beats paper!");
-                }
-            }else if (humanChoice==="paper") {
-                if (computerChoice==="rock") {
-                    humanScore++;
-                    console.log("You won! Paper beats rock!");
-                }else{
-                    computerScore++;
-                    console.log("You lost! Paper beats rock!");
-                }
-            }
         }
     }
 
